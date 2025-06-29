@@ -30,7 +30,7 @@ Projeto backend desenvolvido em .NET 8 para a API do jogo Tic-Tac-Toe.
 
 - Para iniciar a API, execute:
   ```
-  dotnet run --project 
+  dotnet run
   ```
 - Após o start, a documentação Swagger estará disponível em:
   ```
