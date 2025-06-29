@@ -1,37 +1,43 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Tic_Tac_Toe_API.Data;
+using Tic_Tac_Toe_API.DTOs;
 using Tic_Tac_Toe_API.Models;
 
 namespace Tic_Tac_Toe_API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/resultados")]
     public class ResultadosController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IMapper _mapper;
 
-        public ResultadosController(AppDbContext context)
+        public ResultadosController(AppDbContext context, IMapper mapper)
         {
             _context = context;
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> PostResultado([FromBody] Resultado resultado)
-        {
-            _context.Resultados.Add(resultado);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(PostResultado), new { id = resultado.Id }, resultado);
+            _mapper = mapper;
         }
 
         [HttpGet("ultimos")]
-        public async Task<ActionResult<IEnumerable<Resultado>>> GetUltimosVencedores()
+        public async Task<ActionResult<IEnumerable<ResultadoDTO>>> GetUltimos()
         {
-            return await _context.Resultados
-                .Where(r => r.Vencedor != "E") // E = Empate
+            var resultados = await _context.Resultados
                 .OrderByDescending(r => r.DataHora)
                 .Take(10)
                 .ToListAsync();
+
+            return Ok(_mapper.Map<List<ResultadoDTO>>(resultados));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostResultado(ResultadoDTO dto)
+        {
+            var resultado = _mapper.Map<Resultado>(dto);
+            _context.Resultados.Add(resultado);
+            await _context.SaveChangesAsync();
+            return Ok();
         }
     }
 }
