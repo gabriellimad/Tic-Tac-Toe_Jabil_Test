@@ -15,6 +15,7 @@ Projeto backend desenvolvido em .NET 8 para a API do jogo Tic-Tac-Toe.
 - AutoMapper
 - Swagger para documentação e testes da API
 - xUnit + Moq para testes unitários
+- Visual Studio, utilizar o VS para rodar o projeto é mais intuitivo.
 
 ## Executando a aplicação localmente
 
@@ -27,16 +28,16 @@ Projeto backend desenvolvido em .NET 8 para a API do jogo Tic-Tac-Toe.
   dotnet ef database update
   ```
 - Certifique-se de que o `appsettings.json` esteja configurado com a string de conexão correta para seu banco PostgreSQL.
-
+- 
 - Para iniciar a API, execute:
   ```
   dotnet run
   ```
 - Após o start, a documentação Swagger estará disponível em:
   ```
-  http://localhost:<porta>/swagger/index.html
+  http://localhost:5050/swagger/index.html
   ```
-  onde `<porta>` é a porta configurada no projeto (normalmente 5050).
+  onde 5050 é a porta configurada no projeto.
 
 ## Testes
 
