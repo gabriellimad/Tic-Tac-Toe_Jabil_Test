@@ -1,0 +1,9 @@
+mat-card {
+  max-width: 60%;
+  margin: 20px auto;
+  padding: 16px;
+}
+
+table {
+  width: 100%;
+}

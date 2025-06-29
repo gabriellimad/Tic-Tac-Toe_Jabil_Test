@@ -1,0 +1,18 @@
+<div class="info">
+  <p *ngIf="!winner && !draw">Turn: <strong>{{ currentPlayer }}</strong></p>
+  <p *ngIf="winner">Winner: <strong>{{ winner }}</strong></p>
+  <p *ngIf="draw && !winner">Draw!</p>
+</div>
+
+<div class="board">
+  <div
+    *ngFor="let cell of board; let i = index"
+    (click)="makeMove(i)"
+    [ngClass]="{ x: cell === 'X', o: cell === 'O' }">
+    {{ cell }}
+  </div>
+</div>
+
+<div class="actions">
+  <button (click)="reset()">Reset Game</button>
+</div>

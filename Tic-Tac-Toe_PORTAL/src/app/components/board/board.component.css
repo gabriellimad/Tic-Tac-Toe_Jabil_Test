@@ -1,0 +1,42 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+  margin: 20px auto;
+  width: max-content;
+}
+
+.board div {
+  background-color: #f9f9f9;
+  border: 2px solid #444;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  user-select: none;
+  outline: none;
+}
+
+.board div:focus {
+  outline: none;
+}
+
+.info {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.actions {
+  text-align: center;
+  margin-top: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
