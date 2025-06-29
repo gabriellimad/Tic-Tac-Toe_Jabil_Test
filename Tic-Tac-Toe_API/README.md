@@ -1,34 +1,57 @@
-# Tic Tac Toe API
 
-API backend para o projeto Tic Tac Toe, constru�da com .NET 8, usando PostgreSQL e Entity Framework Core.
+# Tic-Tac-Toe_API
 
----
+Projeto backend desenvolvido em .NET 8 para a API do jogo Tic-Tac-Toe.
 
-## Tecnologias Utilizadas
+## Estrutura do projeto
+
+- Código-fonte da API: `Tic-Tac-Toe_Jabil_Test/Tic-Tac-Toe_API/Tic-Tac-Toe_API`
+- Testes: `Tic-Tac-Toe_Jabil_Test/Tic-Tac-Toe_API/Tic-Tac-Toe_API_Test`
+
+## Tecnologias utilizadas
 
 - .NET 8
-- Entity Framework Core
-- PostgreSQL
+- Entity Framework Core com PostgreSQL
 - AutoMapper
-- Swagger (OpenAPI)
-- xUnit + Moq para testes automatizados
+- Swagger para documentação e testes da API
+- xUnit + Moq para testes unitários
+
+## Executando a aplicação localmente
+
+- A API está configurada para rodar em HTTP por padrão (não HTTPS), para evitar problemas de certificado.
+- A API está no caminho: Tic-Tac-Toe_Jabil_Test/Tic-Tac-Toe_API/Tic-Tac-Toe_API
+- O projeto utiliza migrations do Entity Framework Core.
+- A primeira vez que rodar o projeto, as tabelas serão criadas automaticamente se não existirem.
+- Para aplicar as migrations manualmente, use o comando:
+  ```
+  dotnet ef database update
+  ```
+- Certifique-se de que o `appsettings.json` esteja configurado com a string de conexão correta para seu banco PostgreSQL.
+
+- Para iniciar a API, execute:
+  ```
+  dotnet run --project 
+  ```
+- Após o start, a documentação Swagger estará disponível em:
+  ```
+  http://localhost:<porta>/swagger/index.html
+  ```
+  onde `<porta>` é a porta configurada no projeto (normalmente 5050).
+
+## Testes
+
+- Os testes unitários estão localizados na pasta `Tic-Tac-Toe_Jabil_Test/Tic-Tac-Toe_API/Tic-Tac-Toe_API_Test`
+- Para executar os testes, use o comando:
+  ```
+  dotnet test
+  ```
+
+## Observações
+
+- O projeto está configurado para criar e manter o banco de dados via migrations automaticamente.
+- Caso queira resetar o banco, apague o banco e rode `dotnet ef database update` novamente.
+- O Swagger facilita o teste das rotas GET e POST da API diretamente pelo navegador.
 
 ---
 
-## Estrutura do Projeto
-
-- `Tic-Tac-Toe_API`: Projeto principal da API REST
-- `Tic-Tac-Toe_API_Test`: Projeto de testes unit�rios
-
-Caminho do projeto API: `Tic-Tac-Toe_Jabil_Test\Tic-Tac-Toe_API\Tic-Tac-Toe_API`
-
----
-
-## Como Rodar a API
-
-1. Certifique-se de ter o .NET 8 SDK instalado.
-2. Configure a string de conex�o com o PostgreSQL no `appsettings.json`.
-3. Abra o terminal na pasta da API.
-4. Execute o comando para aplicar as migrations e criar o banco:
-
-dotnet ef database update
+Este README visa facilitar a configuração e execução do backend Tic-Tac-Toe para outros desenvolvedores e testes locais.
