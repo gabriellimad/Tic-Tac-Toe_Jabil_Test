@@ -28,7 +28,6 @@ Projeto backend desenvolvido em .NET 8 para a API do jogo Tic-Tac-Toe.
   dotnet ef database update
   ```
 - Certifique-se de que o `appsettings.json` esteja configurado com a string de conexão correta para seu banco PostgreSQL.
-- 
 - Para iniciar a API, execute:
   ```
   dotnet run
